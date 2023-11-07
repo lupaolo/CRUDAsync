@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function AlunoScreen() {
   const [alunos, setAlunos] = useState([]);
@@ -10,20 +9,7 @@ export default function AlunoScreen() {
   const [curso, setCurso] = useState('');
   const [editIndex, setEditIndex] = useState(null);
 
-  useEffect(() => {
-    carregarDados();
-  }, []);
-
-  const carregarDados = async () => {
-    try {
-      const alunosData = await AsyncStorage.getItem('alunos');
-      if (alunosData) {
-        setAlunos(JSON.parse(alunosData));
-      }
-    } catch (error) {
-      console.error('Erro ao carregar dados:', error);
-    }
-  };
+  
 
   const salvarDados = async () => {
     try {
@@ -124,7 +110,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor:'#E6E6FA',
+    backgroundColor:'#98FB98',
   },
   label: {
     fontSize: 18,
@@ -143,7 +129,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     padding: 12,
     margin: 4,
-    backgroundColor: '#FFF0F5',
+    backgroundColor: '#6B8E23',
   },
   alunoItemText: {
     fontSize: 16,
